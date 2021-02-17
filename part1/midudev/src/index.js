@@ -1,63 +1,55 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { useState } from 'react';
+import { App } from './components/App.js'
+const notes = [
+    {
+        "userId": 1,
+        "id": 1,
+        "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+        "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
+      },
+      {
+        "userId": 1,
+        "id": 2,
+        "title": "qui est esse",
+        "body": "est rerum tempore vitae\nsequi sint nihil reprehenderit dolor beatae ea dolores neque\nfugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis\nqui aperiam non debitis possimus qui neque nisi nulla"
+      },
+      {
+        "userId": 1,
+        "id": 3,
+        "title": "ea molestias quasi exercitationem repellat qui ipsa sit aut",
+        "body": "et iusto sed quo iure\nvoluptatem occaecati omnis eligendi aut ad\nvoluptatem doloribus vel accusantium quis pariatur\nmolestiae porro eius odio et labore et velit aut"
+      },
+      {
+        "userId": 1,
+        "id": 4,
+        "title": "eum et est occaecati",
+        "body": "ullam et saepe reiciendis voluptatem adipisci\nsit amet autem assumenda provident rerum culpa\nquis hic commodi nesciunt rem tenetur doloremque ipsam iure\nquis sunt voluptatem rerum illo velit"
+      },
+      {
+        "userId": 1,
+        "id": 5,
+        "title": "nesciunt quas odio",
+        "body": "repudiandae veniam quaerat sunt sed\nalias aut fugiat sit autem sed est\nvoluptatem omnis possimus esse voluptatibus quis\nest aut tenetur dolor neque"
+      },
+      {
+        "userId": 1,
+        "id": 6,
+        "title": "dolorem eum magni eos aperiam quia",
+        "body": "ut aspernatur corporis harum nihil quis provident sequi\nmollitia nobis aliquid molestiae\nperspiciatis et ea nemo ab reprehenderit accusantium quas\nvoluptate dolores velit et doloremque molestiae"
+      },
+      {
+        "userId": 1,
+        "id": 7,
+        "title": "magnam facilis autem",
+        "body": "dolore placeat quibusdam ea quo vitae\nmagni quis enim qui quis quo nemo aut saepe\nquidem repellat excepturi ut quia\nsunt ut sequi eos ea sed quas"
+      },
+      {
+        "userId": 1,
+        "id": 8,
+        "title": "dolorem dolore est ipsam",
+        "body": "dignissimos aperiam dolorem qui eum\nfacilis quibusdam animi sint suscipit qui sint possimus cum\nquaerat magni maiores excepturi\nipsam ut commodi dolor voluptatum modi aut vitae"
+      },
+];
 
-const WarningNotUsed = () => {
-    return (
-        <p>TODAVIA NO SE HA USADO EL CONTADOR.</p>
-    )
-}
-
-const ListOfClicks = ({list}) => {
-    return (
-        <p>{list.join(',')}</p>
-    )
-}
-
-const App = () => {
-    /*
-    const [left, setLeft] = useState(0);
-    const [right, setRight] =  useState(0)
-     */
-
-    const [counters, setCounters] = useState({
-        left: 0,
-        right: 0,
-        mensaje: 'Mensaje en el estado',
-    });
-    const [clicks, setClicks] = useState([]);
-
-    const handleClickLeft = () => {
-        const newCounterState = {
-            ...counters,
-            left: counters.left + 1,
-        };
-        setCounters(newCounterState);
-        setClicks((prevClicks) => [...prevClicks, 'L']);
-    };
-
-    const handleClickRight = () => {
-        const newCounterState = {
-            ...counters,
-            right: counters.right + 1,
-        };
-        setCounters(newCounterState);
-        setClicks((prevClicks) => [...prevClicks, 'R']);
-    }
-
-    return (
-        <div>
-            {counters.left}
-            <button onClick={handleClickLeft}>Left</button>
-            <button onClick={handleClickRight}>Right</button>
-            {counters.right}
-            <p>clicks totales: {clicks.length}</p>
-            {clicks.length === 0 ? 
-            <WarningNotUsed/> : 
-            <ListOfClicks list={clicks} />}
-            <p>{counters.mensaje}</p>
-        </div>
-    );
-};
-
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<App notes={notes} />, document.getElementById('root'));
