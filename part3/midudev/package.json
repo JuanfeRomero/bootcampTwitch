@@ -1,0 +1,19 @@
+{
+  "name": "midudev",
+  "version": "1.0.0",
+  "description": "tercera parte del bootcamp fullstack de midudev",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Juanfe Romero",
+  "license": "ISC",
+  "dependencies": {
+    "express": "4.17.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.20.0",
+    "nodemon": "2.0.7"
+  }
+}
