@@ -1,17 +1,16 @@
 import { useState } from 'react';
 
-function Statistics({ score }) {
-    let total = score.bad + score.good + score.neutral;
-    let average = total === 0 ? 0 : (score.good - score.bad) / total;
-    let percentage = total === 0 ? 0 : (score.good * 100) / total;
-
+function Statistics({ score, value }) {
     return (
-        <>
-            <p>all {total}</p>
-            <p>average {average}</p>
-            <p>positive {percentage}%</p>
-        </>
+        <tr>
+            <td>{score}</td>
+            <td>{value}</td>
+        </tr>
     );
+}
+
+function Button({ state, text }) {
+    return <button onClick={state}>{text}</button>;
 }
 
 function App() {
@@ -45,17 +44,35 @@ function App() {
         setScore(newScore);
     };
 
+    let total = score.bad + score.good + score.neutral;
+
     return (
         <main>
             <h1>give feedback</h1>
-            <button onClick={goodScore}>good</button>
-            <button onClick={neutralScore}>neutral</button>
-            <button onClick={badScore}>bad</button>
+            <Button state={goodScore} text="good" />
+            <Button state={neutralScore} text="neutral" />
+            <Button state={badScore} text="bad" />
             <h2>statistics</h2>
-            <p>good {score.good}</p>
-            <p>neutral {score.neutral}</p>
-            <p>bad {score.bad}</p>
-            <Statistics score={score}/>
+            {total === 0 ? (
+                <p>No feedback given</p>
+            ) : (
+                <table>
+                    <tbody>
+                        <Statistics score="good" value={score.good} />
+                        <Statistics score="neutral" value={score.neutral} />
+                        <Statistics score="bad" value={score.bad} />
+                        <Statistics score="all" value={total} />
+                        <Statistics
+                            score="average"
+                            value={(score.good - score.bad) / total}
+                        />
+                        <Statistics
+                            score="positive"
+                            value={(score.good * 100) / total}
+                        />
+                    </tbody>
+                </table>
+            )}
         </main>
     );
 }
